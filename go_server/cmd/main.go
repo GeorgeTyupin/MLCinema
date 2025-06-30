@@ -1,17 +1,14 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/GeorgeTyupin/MLCinema/go_server/internal/routers"
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
 	e := echo.New()
 
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Сервер работает!")
-	})
+	routers.InitRoutes(e)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8000"))
 }
