@@ -3,13 +3,17 @@ package handlers
 import (
 	"net/http"
 
+<<<<<<< HEAD
 	"github.com/GeorgeTyupin/MLCinema/go_server/internal/models"
+=======
+>>>>>>> f6170b3af6dc0bd2d8d208a044dad324e642ccbb
 	"github.com/labstack/echo/v4"
 )
 
 func RunServer(c echo.Context) error {
 	return c.String(http.StatusOK, "Сервер работает!")
 }
+<<<<<<< HEAD
 
 func SearchMovie(c echo.Context) error {
 
@@ -42,3 +46,5 @@ func SearchMovie(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, mockFilms)
 }
+=======
+>>>>>>> f6170b3af6dc0bd2d8d208a044dad324e642ccbb
