@@ -23,7 +23,7 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c 
 func main() {
 	e := echo.New()
 	renderer := &TemplateRenderer{
-		templates: template.Must(template.ParseGlob("*.html")),
+		templates: template.Must(template.ParseGlob("go_server/templates/*.html")),
 	}
 
 	e.Renderer = renderer
