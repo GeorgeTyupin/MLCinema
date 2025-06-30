@@ -8,7 +8,8 @@ import (
 )
 
 func RunServer(c echo.Context) error {
-	return c.String(http.StatusOK, "Сервер работает!")
+	films := make(map[string]string)
+	return c.Render(http.StatusOK, "index.html", films)
 }
 
 func SearchMovie(c echo.Context) error {
