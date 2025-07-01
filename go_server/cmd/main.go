@@ -23,6 +23,7 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c 
 
 func main() {
 	database.InitDB()
+	database.SeedTestData()
 
 	e := echo.New()
 	renderer := &TemplateRenderer{
