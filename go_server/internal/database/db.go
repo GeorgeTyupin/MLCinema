@@ -34,6 +34,8 @@ func InitDB() {
 	}
 	DB = db
 
+	// DB.Migrator().DropTable(&models.Film{}, &models.Actor{}) // Удаление старых таблиц для миграций
+
 	if err := DB.AutoMigrate(&models.Film{}, &models.Actor{}); err != nil {
 		log.Fatalf("Ошибка миграции: %v", err)
 	}

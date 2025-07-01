@@ -19,7 +19,7 @@ func SeedTestData() {
 		Country:     "США",
 		Genre:       "Фантастика",
 		Description: "Будущее Земли под угрозой. Команда астронавтов исследует другие галактики.",
-		Actors: []models.Actor{
+		Actors: []*models.Actor{
 			{Name: "Мэттью МакКонахи"},
 			{Name: "Энн Хэтэуэй"},
 			{Name: "Джессика Честейн"},
