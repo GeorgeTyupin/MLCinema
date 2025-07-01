@@ -32,6 +32,8 @@ func main() {
 
 	e.Renderer = renderer
 
+	e.Static("/static", "go_server/static")
+
 	routers.InitRoutes(e)
 
 	e.Logger.Fatal(e.Start(":8000"))

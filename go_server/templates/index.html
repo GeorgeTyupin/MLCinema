@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MLCinema</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
-    <h1>привет</h1>
+
+    <div class="header">
+        <div class="burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="search-wrapper">
+            <textarea placeholder="Фильмы, сериалы, персонажи, актеры, описания..." rows="1"></textarea>
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul class="menu">
+            <li class="menu-item"><i class="bi bi-film"></i><span>Фильмы</span></li>
+            <li class="menu-item"><i class="bi bi-tv"></i><span>Сериалы</span></li>
+            <li class="menu-item with-dot"><i class="bi bi-music-note-beamed"></i><span>Концерты</span><span class="dot"></span></li>
+            <li class="menu-item"><i class="bi bi-easel"></i><span>Искусство</span></li>
+            <li class="menu-item with-dot"><i class="bi bi-emoji-smile"></i><span>Мультфильмы</span><span class="dot"></span></li>
+            <li class="menu-item"><i class="bi bi-journal-text"></i><span>Документальное</span></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <h2 class="section-title">Специальная подборка для вас</h2>
+        <div class="film-row">
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+        </div>
+
+        <h2 class="section-title">Новая подборка: нестареющая классика</h2>
+        <div class="film-row">
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+            <div class="film-card skeleton"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const textarea = document.querySelector(".search-wrapper textarea");
+        textarea.addEventListener("input", function () {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        });
+        });
+    </script>
 </body>
 </html>
