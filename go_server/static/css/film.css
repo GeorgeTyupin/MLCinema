@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.film-page {
+    padding: 40px;
+    max-width: 1750px;
+    margin: 0 auto;
+}
+
+.back-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    transition: 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.film-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.poster {
+    width: 280px;
+    height: 420px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #333 25%, #444 50%, #333 75%);
+    background-size: 400% 400%;
+    animation: shimmer 2s infinite;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+.film-details {
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.film-title {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.film-meta {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.film-description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.section-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.actor-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.actor-list li {
+    margin-bottom: 5px;
+}
