@@ -12,6 +12,10 @@ func Index(c echo.Context) error {
 	return c.Render(http.StatusOK, "index.html", nil)
 }
 
+func Film(c echo.Context) error {
+	return c.Render(http.StatusOK, "film.html", nil)
+}
+
 func SearchMovie(c echo.Context) error {
 
 	var mockFilms = models.Film{ID: 1}
@@ -26,4 +30,12 @@ func GetFilms(c echo.Context) error {
 	database.DB.Preload("Actors").Find(&films)
 
 	return c.JSON(http.StatusOK, films)
+}
+
+func GetCurrentFilm(c echo.Context) error {
+	var film models.Film
+	film_id := c.QueryParam("film_id")
+	database.DB.Preload("Actors").First(&film, film_id)
+
+	return c.JSON(http.StatusOK, film)
 }

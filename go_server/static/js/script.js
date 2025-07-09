@@ -19,10 +19,13 @@ function renderFilmPosters() {
             $(row).removeClass("skeleton");
             let cardImg = $(row).children()[0];
             cardImg.src = `..${films[index].imagePath}`;
-            console.log(films[index])
             $(row).attr("id", films[index].id);
         }
     });
+}
+
+function redirectToFilm() {
+    window.location.href = `/film?film_id=${this.id}`;
 }
 
 function getFilms() {
@@ -35,6 +38,7 @@ function getFilms() {
 function main() {
     getFilms();
     customHeightTextarea();
+    $(".film-card").click(redirectToFilm);
 }
 
 main();
