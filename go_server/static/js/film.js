@@ -2,11 +2,17 @@ var film = {};
 
 function renderCurrentFilm() {
     console.log(film);   
-    console.log($(".poster img"))
     $(".poster img").attr("src", film.imagePath);
     $(".film-title").text(film.title);
-    $(".film-meta").text(film.country + "," + film.year + "·" + film.genre)
+    $(".film-meta").text(film.country + ", " + film.year + " · " + film.genre)
     $(".film-description").text(film.description)
+    renderActors();
+}
+
+function renderActors() {
+    film.actors.forEach(actor => {
+        $(".actor-list").append(`<li>${actor.name}</li>`);
+    });
 }
 
 function getFilmData(film_id) {
