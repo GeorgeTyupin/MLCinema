@@ -36,14 +36,14 @@ body {
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 100px;
+    gap: 200px;
     justify-content: center;
     align-items: flex-start;
 }
 
 .poster {
-    width: 280px;
-    height: 420px;
+    width: 350px;
+    height: 500px;
     border-radius: 10px;
     background: linear-gradient(135deg, #333 25%, #444 50%, #333 75%);
     background-size: 400% 400%;
