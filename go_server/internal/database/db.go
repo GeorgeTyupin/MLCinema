@@ -41,3 +41,11 @@ func InitDB() {
 		log.Fatalf("Ошибка миграции: %v", err)
 	}
 }
+
+// func GetData() {
+// 	var films []models.Film
+
+// 	DB.Find(&films)
+
+// 	if
+// }

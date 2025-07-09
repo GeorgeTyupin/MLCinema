@@ -6,6 +6,7 @@ import (
 )
 
 func InitRoutes(e *echo.Echo) {
-	e.GET("/", handlers.RunServer)
+	e.GET("/", handlers.Index)
+	e.POST("/api/get-films", handlers.GetFilms)
 	e.POST("/", handlers.SearchMovie)
 }

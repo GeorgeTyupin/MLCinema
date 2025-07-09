@@ -8,9 +8,8 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func RunServer(c echo.Context) error {
-	films := make(map[string]string)
-	return c.Render(http.StatusOK, "index.html", films)
+func Index(c echo.Context) error {
+	return c.Render(http.StatusOK, "index.html", nil)
 }
 
 func SearchMovie(c echo.Context) error {
@@ -19,4 +18,12 @@ func SearchMovie(c echo.Context) error {
 	database.DB.Preload("Actors").First(&mockFilms)
 
 	return c.JSON(http.StatusOK, mockFilms)
+}
+
+func GetFilms(c echo.Context) error {
+	var films []models.Film
+
+	database.DB.Preload("Actors").Find(&films)
+
+	return c.JSON(http.StatusOK, films)
 }
