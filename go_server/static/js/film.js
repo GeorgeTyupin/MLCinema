@@ -2,6 +2,7 @@ var film = {};
 
 function renderCurrentFilm() {
     console.log(film);   
+    console.log($(".poster img"))
     $(".poster img").attr("src", film.imagePath);
     $(".film-title").text(film.title);
     $(".film-meta").text(film.country + "," + film.year + "·" + film.genre)
@@ -9,6 +10,7 @@ function renderCurrentFilm() {
 }
 
 function getFilmData(film_id) {
+    console.log(film_id)
     $.post("/api/get-current-film", {"film_id" : film_id}, function(response) {
         film = response;  
         renderCurrentFilm();

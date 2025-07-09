@@ -34,8 +34,7 @@ func GetFilms(c echo.Context) error {
 
 func GetCurrentFilm(c echo.Context) error {
 	var film models.Film
-	film_id := c.QueryParam("film_id")
+	film_id := c.FormValue("film_id")
 	database.DB.Preload("Actors").First(&film, film_id)
-
 	return c.JSON(http.StatusOK, film)
 }
