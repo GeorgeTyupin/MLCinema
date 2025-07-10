@@ -51,7 +51,7 @@ body {
     max-width: 700px;
     min-width: 300px;
     top: 10px;
-    left: 50px;
+    left: 15px; 
 }
 
 .search-wrapper textarea {
@@ -125,6 +125,10 @@ body {
     background: #333;
 }
 
+.active-category {
+    background: #333;
+}
+
 .menu-item .dot {
     padding: 0;
     position: absolute;
@@ -137,7 +141,7 @@ body {
 }
 
 .main {
-    margin-left: 270px;
+    margin-left: 250px;
     margin-top: 50px;
     padding: 30px;
     text-align: center;
@@ -148,6 +152,7 @@ body {
     font-size: 1.4em;
     text-align: center;
     max-width: 1300px;
+    margin-left: 50px;
 }
 
 .film-row {
