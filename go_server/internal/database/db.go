@@ -34,18 +34,11 @@ func InitDB() {
 	}
 	DB = db
 
-	// DB.Migrator().DropTable("film_actors")
-	// DB.Migrator().DropTable(&models.Film{}, &models.Actor{}) // Удаление старых таблиц для миграций
+	// DB.Migrator().DropTable(&models.Film{}, &models.Actor{}, &models.Category{}, "film_categories", "film_actors") // Удаление старых таблиц для миграций
 
-	if err := DB.AutoMigrate(&models.Actor{}, &models.Film{}); err != nil {
+	if err := DB.AutoMigrate(&models.Actor{}, &models.Film{}, &models.Category{}); err != nil {
 		log.Fatalf("Ошибка миграции: %v", err)
 	}
+
+	// SeedTestData()
 }
-
-// func GetData() {
-// 	var films []models.Film
-
-// 	DB.Find(&films)
-
-// 	if
-// }
