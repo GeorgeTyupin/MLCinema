@@ -9,7 +9,10 @@ func InitRoutes(e *echo.Echo) {
 	e.GET("/", handlers.Index)
 	e.POST("/", handlers.SearchMovie)
 	e.GET("/film", handlers.Film)
-	e.POST("/api/get-films", handlers.GetFilms)
-	e.POST("/api/get-categories", handlers.GetCategories)
-	e.POST("/api/get-current-film", handlers.GetCurrentFilm)
+
+	api := e.Group("/api")
+
+	api.POST("/get-films", handlers.GetFilms)
+	api.POST("/get-categories", handlers.GetCategories)
+	api.POST("/get-current-film", handlers.GetCurrentFilm)
 }
