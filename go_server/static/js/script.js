@@ -16,6 +16,7 @@ function activeCategory() {
         $(this).removeClass('active-category');
         $(this).width(width - 50);
         $(this).height(height - 10);
+        $(".section-title").eq(0).text("Специальная подборка для вас");
         $(".film-row").eq(0).children().remove();
         $(".section-title").eq(1).removeClass('hide');
         $(".film-row").eq(1).removeClass('hide');
