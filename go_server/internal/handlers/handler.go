@@ -19,7 +19,7 @@ func Film(c echo.Context) error {
 func SearchMovie(c echo.Context) error {
 
 	var mockFilms = models.Film{ID: 1}
-	database.DB.Preload("Actors").First(&mockFilms)
+	database.DB.Preload("Actors").Preload("Categories").First(&mockFilms)
 
 	return c.JSON(http.StatusOK, mockFilms)
 }
@@ -27,9 +27,17 @@ func SearchMovie(c echo.Context) error {
 func GetFilms(c echo.Context) error {
 	var films []models.Film
 
-	database.DB.Preload("Actors").Find(&films)
+	database.DB.Preload("Actors").Preload("Categories").Find(&films)
 
 	return c.JSON(http.StatusOK, films)
+}
+
+func GetCategories(c echo.Context) error {
+	var categories []models.Category
+
+	database.DB.Find(&categories)
+
+	return c.JSON(http.StatusOK, categories)
 }
 
 func GetCurrentFilm(c echo.Context) error {

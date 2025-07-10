@@ -24,19 +24,47 @@ function renderFilmPosters() {
     });
 }
 
+function renderCategories(categories) {
+    categories.forEach(category => {
+        $(".menu").append(`<li class="menu-item" id="${category.id}"><span>${category.name}</span></li>`);
+    });
+
+    let maxWidth = 0;
+
+    $('.menu-item').each(function () {
+        let width = $(this).width();
+        if (width > maxWidth) {
+            maxWidth = width;
+        }
+    });
+    
+    console.log(maxWidth)
+
+    $('.menu-item').each(function () {
+        $(this).width(maxWidth);
+    });
+}
+
 function redirectToFilm() {
     window.location.href = `/film?film_id=${this.id}`;
 }
 
 function getFilms() {
     $.post("/api/get-films", function(response) {
-        films = response;          
+        films = response;       
         renderFilmPosters();       
+    });
+}
+
+function getCategories() {
+    $.post("/api/get-categories", function(response) {    
+        renderCategories(response);
     });
 }
 
 function main() {
     getFilms();
+    getCategories();
     customHeightTextarea();
     $(".film-card").click(redirectToFilm);
 }
