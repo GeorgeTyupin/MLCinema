@@ -27,6 +27,7 @@ function activeCategory() {
             <div class="film-card skeleton" id=""><img src="" alt=""></div>
         `);
         renderFilmPosters();
+        $(".film-card").click(redirectToFilm);
     } else {
         $('.menu-item').each(function () {
             if ($(this).hasClass('active-category')) {
@@ -40,6 +41,7 @@ function activeCategory() {
         $(this).width(width + 50);
         $(this).height(height + 10);
         renderFilmByCategory($(this).children().eq(0).text(), $(this).attr("id").slice(7));
+        $(".film-card").click(redirectToFilm);
     }
 }
 
