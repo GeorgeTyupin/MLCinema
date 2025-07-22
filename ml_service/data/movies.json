@@ -1,0 +1,168 @@
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "description": "A skilled thief leads a team into people's dreams.",
+    "year": 2010,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 2,
+    "title": "The Matrix",
+    "description": "A hacker discovers the world is a simulation.",
+    "year": 1999,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 3,
+    "title": "Interstellar",
+    "description": "Astronauts search for a new home for humanity.",
+    "year": 2014,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 4,
+    "title": "The Godfather",
+    "description": "The aging patriarch of an organized crime dynasty transfers control to his reluctant son.",
+    "year": 1972,
+    "watched": false,
+    "named_entities": []
+  },
+  {
+    "id": 5,
+    "title": "Pulp Fiction",
+    "description": "The lives of two hitmen intertwine with crime stories in LA.",
+    "year": 1994,
+    "watched": true,
+    "named_entities": [
+      "la"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Fight Club",
+    "description": "An office worker forms an underground fight club.",
+    "year": 1999,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 7,
+    "title": "The Dark Knight",
+    "description": "Batman faces the Joker, a criminal mastermind.",
+    "year": 2008,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 8,
+    "title": "Forrest Gump",
+    "description": "The story of a man's extraordinary life.",
+    "year": 1994,
+    "watched": false,
+    "named_entities": []
+  },
+  {
+    "id": 9,
+    "title": "The Shawshank Redemption",
+    "description": "A banker is wrongly imprisoned and plans his escape.",
+    "year": 1994,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 10,
+    "title": "Gladiator",
+    "description": "A betrayed Roman general seeks revenge.",
+    "year": 2000,
+    "watched": false,
+    "named_entities": []
+  },
+  {
+    "id": 11,
+    "title": "Whiplash",
+    "description": "A young drummer trains under a ruthless instructor.",
+    "year": 2014,
+    "watched": false,
+    "named_entities": []
+  },
+  {
+    "id": 12,
+    "title": "Parasite",
+    "description": "A poor family schemes to infiltrate a rich household.",
+    "year": 2019,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 13,
+    "title": "The Prestige",
+    "description": "Two magicians compete for supremacy.",
+    "year": 2006,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 14,
+    "title": "Shutter Island",
+    "description": "A US Marshal investigates a psychiatric facility.",
+    "year": 2010,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 15,
+    "title": "The Social Network",
+    "description": "The story of the rise of Facebook.",
+    "year": 2010,
+    "watched": true,
+    "named_entities": [
+      "facebook"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "La La Land",
+    "description": "A musician and an actress fall in love in Los Angeles.",
+    "year": 2016,
+    "watched": false,
+    "named_entities": [
+      "los angeles"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "The Silence of the Lambs",
+    "description": "An FBI trainee consults a serial killer to catch another.",
+    "year": 1991,
+    "watched": false,
+    "named_entities": []
+  },
+  {
+    "id": 18,
+    "title": "Se7en",
+    "description": "Two detectives hunt a serial killer using the seven deadly sins.",
+    "year": 1995,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 19,
+    "title": "Django Unchained",
+    "description": "A freed slave sets out to rescue his wife.",
+    "year": 2012,
+    "watched": true,
+    "named_entities": []
+  },
+  {
+    "id": 20,
+    "title": "The Grand Budapest Hotel",
+    "description": "A concierge teams up with a lobby boy to prove his innocence.",
+    "year": 2014,
+    "watched": false,
+    "named_entities": []
+  }
+]
