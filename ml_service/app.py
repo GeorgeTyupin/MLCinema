@@ -1,17 +1,122 @@
 from flask import Flask, request, jsonify
 import numpy as np
 import pickle
-from movie_utils import preprocess_text, extract_named_entities, encode_text, load_movies
+from movie_utils import preprocess_text, extract_named_entities, encode_text
 from sklearn.metrics.pairwise import cosine_similarity
 from natasha import Doc, NewsNERTagger, NewsEmbedding, Segmenter, MorphVocab
 import json
+import requests
+import os
+import subprocess
+import sys
 
 app = Flask(__name__)
 
-# Загружаем данные
-movies = load_movies('ml_service/data/movies.json')
-with open('ml_service/model/embedder.pkl', 'rb') as f:
-    movie_embeddings = pickle.load(f)
+# Загружаем данные при старте
+movies = []
+movie_embeddings = []
+
+def load_movies_from_go():
+    """Загружает фильмы из Go API и сохраняет в movies.json"""
+    try:
+        print("Получаем фильмы из Go сервиса...")
+        
+        # Запрос к Go API
+        response = requests.post('http://localhost:8000/api/get-films', timeout=10)
+        
+        if response.status_code == 200:
+            go_movies = response.json()
+            print(f"Получено {len(go_movies)} фильмов из Go API")
+            
+            # Преобразуем в нужный формат и сохраняем
+            os.makedirs('ml_service/data', exist_ok=True)
+            with open('ml_service/data/movies.json', 'w', encoding='utf-8') as f:
+                json.dump(go_movies, f, ensure_ascii=False, indent=2)
+            
+            print("Фильмы сохранены в ml_service/data/movies.json")
+            
+            # Автоматически запускаем preprocess_embeddings.py
+            print("Запускаем обработку эмбеддингов...")
+            run_preprocessing()
+            
+            return go_movies
+        else:
+            print(f"Ошибка получения данных из Go API: {response.status_code}")
+            return None
+            
+    except requests.exceptions.ConnectionError:
+        print("Go сервис недоступен на localhost:8000")
+        return None
+    except Exception as e:
+        print(f"Ошибка при загрузке из Go API: {e}")
+        return None
+
+def run_preprocessing():
+    """Запускает обработку эмбеддингов"""
+    try:
+        import subprocess
+        import sys
+        
+        print("Начинаем создание эмбеддингов...")
+        
+        # Запускаем preprocess_embeddings.py
+        result = subprocess.run([
+            sys.executable, 'preprocess_embeddings.py'
+        ], cwd='ml_service', capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            print("Эмбеддинги успешно созданы!")
+            print(result.stdout)
+        else:
+            print("Ошибка при создании эмбеддингов:")
+            print(result.stderr)
+            
+    except Exception as e:
+        print(f"Ошибка запуска preprocess_embeddings.py: {e}")
+
+def load_movies_data():
+    """Загружает данные о фильмах и эмбеддинги"""
+    global movies, movie_embeddings
+    
+    movies_file = 'ml_service/data/movies.json'
+    embeddings_file = 'ml_service/model/embedder.pkl'
+    
+    # Проверяем наличие файлов
+    if not os.path.exists(movies_file):
+        print("Файл movies.json не найден, загружаем из Go API...")
+        movies = load_movies_from_go()
+        if not movies:
+            print("ПРЕДУПРЕЖДЕНИЕ: Не удалось загрузить фильмы!")
+            movies = []
+            return
+    else:
+        # Загружаем существующий файл
+        with open(movies_file, 'r', encoding='utf-8') as f:
+            movies = json.load(f)
+    
+    # Загружаем эмбеддинги если есть
+    if os.path.exists(embeddings_file):
+        with open(embeddings_file, 'rb') as f:
+            movie_embeddings = pickle.load(f)
+        print(f"Загружено {len(movie_embeddings)} эмбеддингов")
+    else:
+        print("ПРЕДУПРЕЖДЕНИЕ: Файл embeddings не найден!")
+        # Если есть фильмы, но нет эмбеддингов - создаем их
+        if movies:
+            print("Создаем эмбеддинги для загруженных фильмов...")
+            run_preprocessing()
+            # Пытаемся загрузить созданные эмбеддинги
+            if os.path.exists(embeddings_file):
+                with open(embeddings_file, 'rb') as f:
+                    movie_embeddings = pickle.load(f)
+                print(f"Загружено {len(movie_embeddings)} эмбеддингов")
+            else:
+                movie_embeddings = []
+        else:
+            movie_embeddings = []
+
+# Загружаем данные при импорте
+load_movies_data()
 
 def determine_alpha(user_input, user_entities):
     """
@@ -63,6 +168,19 @@ def determine_alpha(user_input, user_entities):
 @app.route('/recommend', methods=['POST'])
 def recommend():
     """Обрабатываем поисковый запрос от Go сервера"""
+    
+    # Проверяем что данные загружены
+    if not movies:
+        return jsonify({
+            'status': 'error',
+            'error': 'Данные о фильмах не загружены. Попробуйте /sync-movies'
+        }), 500
+    
+    if not movie_embeddings:
+        return jsonify({
+            'status': 'error', 
+            'error': 'Эмбеддинги не загружены. Нужно пересчитать модель.'
+        }), 500
     
     # 1. Получаем данные из запроса
     try:
@@ -167,19 +285,30 @@ def health():
         'embeddings_loaded': len(movie_embeddings)
     })
 
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    """Тестовый эндпоинт для отладки"""
-    if request.method == 'GET':
+@app.route('/sync-movies', methods=['POST'])
+def sync_movies():
+    """Принудительно обновить список фильмов из Go API"""
+    global movies, movie_embeddings
+    
+    movies = load_movies_from_go()  # Это автоматически запустит preprocessing
+    if movies:
+        # Перезагружаем эмбеддинги после обработки
+        embeddings_file = 'ml_service/model/embedder.pkl'
+        if os.path.exists(embeddings_file):
+            with open(embeddings_file, 'rb') as f:
+                movie_embeddings = pickle.load(f)
+        
         return jsonify({
-            'message': 'ML сервис работает',
+            'status': 'success',
+            'message': f'Синхронизировано {len(movies)} фильмов и созданы эмбеддинги',
             'movies_count': len(movies),
-            'sample_movie': movies[0]['title'] if movies else 'Нет фильмов'
+            'embeddings_count': len(movie_embeddings)
         })
     else:
-        # POST запрос для тестирования
-        query = request.form.get('query', 'тест')
-        return recommend()
+        return jsonify({
+            'status': 'error',
+            'error': 'Не удалось загрузить фильмы из Go API'
+        }), 500
 
 if __name__ == '__main__':
     print(f"Загружено {len(movies)} фильмов")
