@@ -3,7 +3,7 @@ import pickle
 from movie_utils import preprocess_text, encode_text, extract_named_entities
 
 # Загрузка фильмов в новой структуре
-with open('data/movies.json', 'r', encoding='utf-8') as f:
+with open('ml_service/data/movies.json', 'r', encoding='utf-8') as f:
     movies = json.load(f)
 
 embeddings = []
@@ -29,11 +29,11 @@ for movie in movies:
     embeddings.append(encode_text(preprocessed))
 
 # Сохраняем эмбеддинги
-with open('model/embedder.pkl', 'wb') as f:
+with open('ml_service/model/embedder.pkl', 'wb') as f:
     pickle.dump(embeddings, f)
 
 # Обновляем movies.json с named_entities
-with open('data/movies.json', 'w', encoding='utf-8') as f:
+with open('ml_service/data/movies.json', 'w', encoding='utf-8') as f:
     json.dump(movies, f, ensure_ascii=False, indent=2)
 
 print("Готово: эмбеддинги сохранены, named_entities добавлены в movies.json")

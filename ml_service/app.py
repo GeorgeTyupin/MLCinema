@@ -8,8 +8,8 @@ from natasha import Doc, NewsNERTagger, NewsEmbedding, Segmenter, MorphVocab
 app = Flask(__name__)
 
 # Загружаем данные
-movies = load_movies('data/movies.json')
-with open('model/embedder.pkl', 'rb') as f:
+movies = load_movies('ml_service/data/movies.json')
+with open('ml_service/model/embedder.pkl', 'rb') as f:
     movie_embeddings = pickle.load(f)
 
 def determine_alpha(user_input, user_entities):
@@ -69,6 +69,7 @@ def determine_alpha(user_input, user_entities):
 @app.route('/recommend', methods=['POST'])
 def recommend():
     user_input = request.json.get('query')
+    print(user_input)
     if not user_input:
         return jsonify({'error': 'No query provided'}), 400
 

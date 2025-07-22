@@ -33,6 +33,6 @@ def extract_named_entities(text):
 def encode_text(text):
     return model.encode([text])[0]
 
-def load_movies(path='data/movies.json'):
+def load_movies(path='ml_servicedata/movies.json'):
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)

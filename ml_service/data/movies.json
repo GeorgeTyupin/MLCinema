@@ -1,168 +1,708 @@
 [
   {
     "id": 1,
-    "title": "Inception",
-    "description": "A skilled thief leads a team into people's dreams.",
-    "year": 2010,
-    "watched": true,
-    "named_entities": []
+    "title": "Интерстеллар",
+    "year": 2014,
+    "country": "США",
+    "imagePath": "/static/img/interstellar.jpg",
+    "actors": [
+      {
+        "id": 1,
+        "name": "Мэттью МакКонахи",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 2,
+        "name": "Энн Хэтэуэй",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Фантастика",
+        "films": null
+      }
+    ],
+    "description": "Будущее Земли под угрозой. Астронавты ищут новую планету.",
+    "named_entities": [
+      "мэттью макконахи энн хэтэуэй"
+    ]
   },
   {
     "id": 2,
-    "title": "The Matrix",
-    "description": "A hacker discovers the world is a simulation.",
-    "year": 1999,
-    "watched": true,
-    "named_entities": []
+    "title": "Начало",
+    "year": 2010,
+    "country": "США",
+    "imagePath": "/static/img/inception.jpg",
+    "actors": [
+      {
+        "id": 3,
+        "name": "Леонардо Ди Каприо",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 4,
+        "name": "Том Харди",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Фантастика",
+        "films": null
+      },
+      {
+        "id": 2,
+        "name": "Триллер",
+        "films": null
+      }
+    ],
+    "description": "Проникновение в сны и внедрение идей.",
+    "named_entities": [
+      "леонардо ди каприо",
+      "том харди"
+    ]
   },
   {
     "id": 3,
-    "title": "Interstellar",
-    "description": "Astronauts search for a new home for humanity.",
-    "year": 2014,
-    "watched": true,
-    "named_entities": []
+    "title": "Матрица",
+    "year": 1999,
+    "country": "США",
+    "imagePath": "/static/img/matrix.jpg",
+    "actors": [
+      {
+        "id": 5,
+        "name": "Киану Ривз",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 6,
+        "name": "Кэрри-Энн Мосс",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Фантастика",
+        "films": null
+      }
+    ],
+    "description": "Реальность — это симуляция.",
+    "named_entities": [
+      "киану ривз",
+      "кэрри-энн мосс"
+    ]
   },
   {
     "id": 4,
-    "title": "The Godfather",
-    "description": "The aging patriarch of an organized crime dynasty transfers control to his reluctant son.",
-    "year": 1972,
-    "watched": false,
-    "named_entities": []
+    "title": "Бойцовский клуб",
+    "year": 1999,
+    "country": "США",
+    "imagePath": "/static/img/fight_club.jpg",
+    "actors": [
+      {
+        "id": 7,
+        "name": "Брэд Питт",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 8,
+        "name": "Эдвард Нортон",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      }
+    ],
+    "description": "Мужчина создаёт подпольный бойцовский клуб.",
+    "named_entities": [
+      "брэд питт",
+      "эдвард нортон"
+    ]
   },
   {
     "id": 5,
-    "title": "Pulp Fiction",
-    "description": "The lives of two hitmen intertwine with crime stories in LA.",
+    "title": "Форрест Гамп",
     "year": 1994,
-    "watched": true,
+    "country": "США",
+    "imagePath": "/static/img/forrest_gump.jpg",
+    "actors": [
+      {
+        "id": 9,
+        "name": "Том Хэнкс",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      },
+      {
+        "id": 4,
+        "name": "Биография",
+        "films": null
+      }
+    ],
+    "description": "История жизни Форреста.",
     "named_entities": [
-      "la"
+      "форрест гамп",
+      "форреста",
+      "биография том хэнкс"
     ]
   },
   {
     "id": 6,
-    "title": "Fight Club",
-    "description": "An office worker forms an underground fight club.",
-    "year": 1999,
-    "watched": true,
-    "named_entities": []
+    "title": "Побег из Шоушенка",
+    "year": 1994,
+    "country": "США",
+    "imagePath": "/static/img/shawshank.jpg",
+    "actors": [
+      {
+        "id": 10,
+        "name": "Тим Роббинс",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 11,
+        "name": "Морган Фримен",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      }
+    ],
+    "description": "Заключённый планирует побег.",
+    "named_entities": [
+      "шоушенка",
+      "заключённый",
+      "тим роббинс морган фримен"
+    ]
   },
   {
     "id": 7,
-    "title": "The Dark Knight",
-    "description": "Batman faces the Joker, a criminal mastermind.",
+    "title": "Темный рыцарь",
     "year": 2008,
-    "watched": true,
-    "named_entities": []
+    "country": "США",
+    "imagePath": "/static/img/dark_knight.jpg",
+    "actors": [
+      {
+        "id": 12,
+        "name": "Кристиан Бейл",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 13,
+        "name": "Хит Леджер",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 5,
+        "name": "Боевик",
+        "films": null
+      }
+    ],
+    "description": "Бэтмен против Джокера.",
+    "named_entities": [
+      "бэтмен",
+      "джокера",
+      "кристиан бейл хит леджер"
+    ]
   },
   {
     "id": 8,
-    "title": "Forrest Gump",
-    "description": "The story of a man's extraordinary life.",
-    "year": 1994,
-    "watched": false,
-    "named_entities": []
+    "title": "Гладиатор",
+    "year": 2000,
+    "country": "США",
+    "imagePath": "/static/img/gladiator.jpg",
+    "actors": [
+      {
+        "id": 14,
+        "name": "Рассел Кроу",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 5,
+        "name": "Боевик",
+        "films": null
+      },
+      {
+        "id": 6,
+        "name": "История",
+        "films": null
+      }
+    ],
+    "description": "Генерал становится гладиатором.",
+    "named_entities": [
+      "гладиатор генерал",
+      "рассел кроу"
+    ]
   },
   {
     "id": 9,
-    "title": "The Shawshank Redemption",
-    "description": "A banker is wrongly imprisoned and plans his escape.",
-    "year": 1994,
-    "watched": true,
-    "named_entities": []
+    "title": "Зеленая миля",
+    "year": 1999,
+    "country": "США",
+    "imagePath": "/static/img/green_mile.jpg",
+    "actors": [
+      {
+        "id": 9,
+        "name": "Том Хэнкс",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 15,
+        "name": "Майкл Кларк Дункан",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      },
+      {
+        "id": 7,
+        "name": "Фэнтези",
+        "films": null
+      }
+    ],
+    "description": "Сверхъестественные способности заключённого.",
+    "named_entities": [
+      "майкл кларк дункан"
+    ]
   },
   {
     "id": 10,
-    "title": "Gladiator",
-    "description": "A betrayed Roman general seeks revenge.",
-    "year": 2000,
-    "watched": false,
-    "named_entities": []
+    "title": "1+1",
+    "year": 2011,
+    "country": "Франция",
+    "imagePath": "/static/img/intouchables.jpg",
+    "actors": [
+      {
+        "id": 16,
+        "name": "Франсуа Клюзе",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 17,
+        "name": "Омар Си",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      },
+      {
+        "id": 8,
+        "name": "Комедия",
+        "films": null
+      }
+    ],
+    "description": "Инвалид и сиделка становятся друзьями.",
+    "named_entities": [
+      "франсуа клюзе омар си"
+    ]
   },
   {
     "id": 11,
-    "title": "Whiplash",
-    "description": "A young drummer trains under a ruthless instructor.",
-    "year": 2014,
-    "watched": false,
-    "named_entities": []
+    "title": "Остров проклятых",
+    "year": 2010,
+    "country": "США",
+    "imagePath": "/static/img/shutter_island.jpg",
+    "actors": [
+      {
+        "id": 3,
+        "name": "Леонардо Ди Каприо",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 2,
+        "name": "Триллер",
+        "films": null
+      }
+    ],
+    "description": "Маршалы США расследуют исчезновение пациентки.",
+    "named_entities": [
+      "сша",
+      "леонардо ди каприо"
+    ]
   },
   {
     "id": 12,
-    "title": "Parasite",
-    "description": "A poor family schemes to infiltrate a rich household.",
-    "year": 2019,
-    "watched": true,
-    "named_entities": []
+    "title": "Леон",
+    "year": 1994,
+    "country": "Франция",
+    "imagePath": "/static/img/leon.jpg",
+    "actors": [
+      {
+        "id": 18,
+        "name": "Жан Рено",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 19,
+        "name": "Натали Портман",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      },
+      {
+        "id": 5,
+        "name": "Боевик",
+        "films": null
+      }
+    ],
+    "description": "Киллер берёт под опеку девочку.",
+    "named_entities": [
+      "леон киллер",
+      "натали портман"
+    ]
   },
   {
     "id": 13,
-    "title": "The Prestige",
-    "description": "Two magicians compete for supremacy.",
-    "year": 2006,
-    "watched": true,
-    "named_entities": []
+    "title": "Титаник",
+    "year": 1997,
+    "country": "США",
+    "imagePath": "/static/img/titanic.jpg",
+    "actors": [
+      {
+        "id": 3,
+        "name": "Леонардо Ди Каприо",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 20,
+        "name": "Кейт Уинслет",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 9,
+        "name": "Мелодрама",
+        "films": null
+      }
+    ],
+    "description": "История любви на лайнере.",
+    "named_entities": [
+      "леонардо ди каприо кейт уинслет"
+    ]
   },
   {
     "id": 14,
-    "title": "Shutter Island",
-    "description": "A US Marshal investigates a psychiatric facility.",
-    "year": 2010,
-    "watched": true,
-    "named_entities": []
+    "title": "Король Лев",
+    "year": 1994,
+    "country": "США",
+    "imagePath": "/static/img/lion_king.jpg",
+    "actors": [
+      {
+        "id": 21,
+        "name": "Джонатан Тейлор Томас",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 10,
+        "name": "Мультфильм",
+        "films": null
+      }
+    ],
+    "description": "Молодой лев Симба ищет своё место.",
+    "named_entities": [
+      "лев",
+      "симба",
+      "джонатан тейлор томас"
+    ]
   },
   {
     "id": 15,
-    "title": "The Social Network",
-    "description": "The story of the rise of Facebook.",
-    "year": 2010,
-    "watched": true,
+    "title": "Властелин колец: Братство кольца",
+    "year": 2001,
+    "country": "Новая Зеландия",
+    "imagePath": "/static/img/lotr_fellowship.jpg",
+    "actors": [
+      {
+        "id": 22,
+        "name": "Элайджа Вуд",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 23,
+        "name": "Иэн Маккеллен",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 7,
+        "name": "Фэнтези",
+        "films": null
+      }
+    ],
+    "description": "Фродо отправляется уничтожить Кольцо.",
     "named_entities": [
-      "facebook"
+      "кольцо",
+      "фэнтези",
+      "элайджа вуд иэн маккеллен"
     ]
   },
   {
     "id": 16,
-    "title": "La La Land",
-    "description": "A musician and an actress fall in love in Los Angeles.",
-    "year": 2016,
-    "watched": false,
+    "title": "Криминальное чтиво",
+    "year": 1994,
+    "country": "США",
+    "imagePath": "/static/img/pulp_fiction.jpg",
+    "actors": [
+      {
+        "id": 24,
+        "name": "Джон Траволта",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 25,
+        "name": "Сэмюэл Л. Джексон",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 11,
+        "name": "Криминал",
+        "films": null
+      }
+    ],
+    "description": "Истории мафии в Лос-Анджелесе.",
     "named_entities": [
-      "los angeles"
+      "лос-анджелесе",
+      "джон траволта сэмюэл л. джексон"
     ]
   },
   {
     "id": 17,
-    "title": "The Silence of the Lambs",
-    "description": "An FBI trainee consults a serial killer to catch another.",
-    "year": 1991,
-    "watched": false,
-    "named_entities": []
+    "title": "Престиж",
+    "year": 2006,
+    "country": "США",
+    "imagePath": "/static/img/prestige.jpg",
+    "actors": [
+      {
+        "id": 12,
+        "name": "Кристиан Бейл",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 26,
+        "name": "Хью Джекман",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 2,
+        "name": "Триллер",
+        "films": null
+      },
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      }
+    ],
+    "description": "Противостояние двух фокусников.",
+    "named_entities": [
+      "кристиан бейл хью джекман"
+    ]
   },
   {
     "id": 18,
-    "title": "Se7en",
-    "description": "Two detectives hunt a serial killer using the seven deadly sins.",
-    "year": 1995,
-    "watched": true,
-    "named_entities": []
+    "title": "Социальная сеть",
+    "year": 2010,
+    "country": "США",
+    "imagePath": "/static/img/social_network.jpg",
+    "actors": [
+      {
+        "id": 27,
+        "name": "Джесси Айзенберг",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 28,
+        "name": "Эндрю Гарфилд",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 3,
+        "name": "Драма",
+        "films": null
+      },
+      {
+        "id": 4,
+        "name": "Биография",
+        "films": null
+      }
+    ],
+    "description": "Создание Facebook и конфликты вокруг него.",
+    "named_entities": [
+      "facebook",
+      "джесси айзенберг",
+      "эндрю гарфилд"
+    ]
   },
   {
     "id": 19,
-    "title": "Django Unchained",
-    "description": "A freed slave sets out to rescue his wife.",
-    "year": 2012,
-    "watched": true,
-    "named_entities": []
+    "title": "Джокер",
+    "year": 2019,
+    "country": "США",
+    "imagePath": "/static/img/joker.jpg",
+    "actors": [
+      {
+        "id": 29,
+        "name": "Хоакин Феникс",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 2,
+        "name": "Триллер",
+        "films": null
+      }
+    ],
+    "description": "История становления Джокера.",
+    "named_entities": [
+      "джокера",
+      "хоакин феникс"
+    ]
   },
   {
     "id": 20,
-    "title": "The Grand Budapest Hotel",
-    "description": "A concierge teams up with a lobby boy to prove his innocence.",
-    "year": 2014,
-    "watched": false,
-    "named_entities": []
+    "title": "Бегущий по лезвию 2049",
+    "year": 2017,
+    "country": "США",
+    "imagePath": "/static/img/blade_runner_2049.jpg",
+    "actors": [
+      {
+        "id": 30,
+        "name": "Райан Гослинг",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      },
+      {
+        "id": 31,
+        "name": "Харрисон Форд",
+        "birth_year": 0,
+        "nationality": "",
+        "filmid": null
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Фантастика",
+        "films": null
+      }
+    ],
+    "description": "Офицер Кей раскрывает тайну, угрожающую обществу.",
+    "named_entities": [
+      "кей",
+      "райан гослинг харрисон форд"
+    ]
   }
 ]
