@@ -112,6 +112,178 @@ function getCategories() {
     });
 }
 
+// Функция ML поиска
+function performMLSearch() {
+    const query = $(".search-wrapper textarea").val().trim();
+    
+    if (!query) {
+        showError("Введите поисковый запрос", 1);
+        return;
+    }
+
+    // Показываем индикатор загрузки
+    showLoading();
+
+    $.post("/", {"query": query})
+        .done(function(response) {
+            handleSearchSuccess(response, query);
+        })
+        .fail(function(xhr) {
+            handleSearchError(xhr, query);
+        });
+}
+
+// Обработка успешного ответа
+function handleSearchSuccess(response, query) {
+    hideLoading();
+
+    // Если это массив фильмов (успешный поиск)
+    if (Array.isArray(response)) {
+        displaySearchResults(response, query);
+    }
+    // Если это объект с результатами
+    else if (response.results && Array.isArray(response.results)) {
+        displaySearchResults(response.results, query);
+    }
+    // Если нет результатов
+    else {
+        showNoResults(query);
+    }
+}
+
+// Обработка ошибок
+function handleSearchError(xhr, query) {
+    hideLoading();
+    
+    try {
+        const error = JSON.parse(xhr.responseText);
+        
+        if (error.code === 1) {
+            showError("Введите поисковый запрос", 1);
+        } else if (error.code === 2) {
+            showError("Сервис поиска временно недоступен", 2);
+        } else {
+            showError("Произошла ошибка при поиске", 0);
+        }
+    } catch (e) {
+        showError("Произошла ошибка при поиске", 0);
+    }
+}
+
+// Отображение результатов поиска
+function displaySearchResults(movies, query) {
+    // Очищаем текущие результаты
+    $(".film-row").eq(0).empty();
+    $(".section-title").eq(0).text(`Результаты поиска: "${query}"`);
+    
+    // Скрываем вторую секцию
+    $(".section-title").eq(1).addClass('hide');
+    $(".film-row").eq(1).addClass('hide');
+
+    if (movies.length === 0) {
+        showNoResults(query);
+        return;
+    }
+
+    // Отображаем найденные фильмы
+    movies.forEach((movie, index) => {
+        if (index < 20) { // Показываем максимум 20 результатов
+            $(".film-row").eq(0).append(`
+                <div class="film-card" id="film_id-${movie.id}">
+                    <img src="${movie.imagePath}" alt="${movie.title}" 
+                         onerror="this.src='/static/img/no-image.jpg'">
+                </div>
+            `);
+        }
+    });
+    
+    // Обновляем обработчики клика
+    $(".film-card").off('click').on('click', redirectToFilm);
+}
+
+// Показ сообщения "нет результатов"
+function showNoResults(query) {
+    $(".film-row").eq(0).html(`
+        <div class="no-results">
+            <p>По запросу "${query}" ничего не найдено</p>
+            <p>Попробуйте изменить поисковый запрос</p>
+        </div>
+    `);
+}
+
+// Показ ошибки
+function showError(message, code) {
+    $(".film-row").eq(0).html(`
+        <div class="error-message">
+            <p>❌ ${message}</p>
+            ${code === 2 ? '<p>Попробуйте повторить поиск позже</p>' : ''}
+        </div>
+    `);
+}
+
+// Показ индикатора загрузки
+function showLoading() {
+    $(".section-title").eq(0).text("Поиск...");
+    $(".film-row").eq(0).html(`
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Ищем подходящие фильмы...</p>
+        </div>
+    `);
+    
+    // Скрываем вторую секцию
+    $(".section-title").eq(1).addClass('hide');
+    $(".film-row").eq(1).addClass('hide');
+}
+
+// Скрытие индикатора загрузки
+function hideLoading() {
+    // Загрузка скрывается автоматически при отображении результатов
+}
+
+// Сброс поиска
+function resetSearch() {
+    $(".search-wrapper textarea").val('');
+    $(".section-title").eq(0).text("Специальная подборка для вас");
+    $(".section-title").eq(1).removeClass('hide');
+    $(".film-row").eq(1).removeClass('hide');
+    
+    // Восстанавливаем изначальные фильмы
+    $(".film-row").eq(0).html(`
+        <div class="film-card skeleton"><img src="" alt=""></div>
+        <div class="film-card skeleton"><img src="" alt=""></div>
+        <div class="film-card skeleton"><img src="" alt=""></div>
+        <div class="film-card skeleton"><img src="" alt=""></div>
+        <div class="film-card skeleton"><img src="" alt=""></div>
+    `);
+    
+    renderFilmPosters();
+    $(".film-card").click(redirectToFilm);
+}
+
+// Обновляем обработчики событий
+$(document).ready(function() {
+    // Поиск по Enter
+    $(".search-wrapper textarea").on("keypress", function(e) {
+        if (e.which === 13 && !e.shiftKey) {
+            e.preventDefault();
+            performMLSearch();
+        }
+    });
+
+    // Поиск по клику на иконку
+    $(".search-wrapper i").on("click", function() {
+        performMLSearch();
+    });
+
+    // Очистка поиска по Escape
+    $(".search-wrapper textarea").on("keydown", function(e) {
+        if (e.which === 27) { // Escape
+            resetSearch();
+        }
+    });
+});
+
 function main() {
     getFilms();
     getCategories();

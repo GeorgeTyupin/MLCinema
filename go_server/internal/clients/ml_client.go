@@ -18,12 +18,21 @@ func NewMLClient(baseURL string) *MLClient {
 }
 
 func (ml *MLClient) SearchMovies(query string) ([]models.Film, error) {
-	var films []models.Film
+	var response struct {
+		Status  string        `json:"status"`
+		Query   string        `json:"query"`
+		Found   int           `json:"found"`
+		Results []models.Film `json:"results"`
+	}
 
 	_, err := ml.client.R().
 		SetFormData(map[string]string{"query": query}).
-		SetResult(&films).
+		SetResult(&response).
 		Post(ml.baseURL + "/recommend")
 
-	return films, err
+	if err != nil {
+		return nil, err
+	}
+
+	return response.Results, nil
 }
