@@ -16,7 +16,7 @@ var DB *gorm.DB
 func InitDB() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Ошибка загрузки .env файла")
+		log.Println("Предупреждение: .env файл не найден, используем переменные окружения")
 	}
 
 	dsn := fmt.Sprintf(
@@ -32,9 +32,10 @@ func InitDB() {
 	if err != nil {
 		log.Fatalf("Ошибка подключения к базе данных: %v", err)
 	}
+
 	DB = db
 
-	// DB.Migrator().DropTable(&models.Film{}, &models.Actor{}, &models.Category{}, "film_categories", "film_actors") // Удаление старых таблиц для миграций
+	DB.Migrator().DropTable(&models.Film{}, &models.Actor{}, &models.Category{}, "film_categories", "film_actors") // Удаление старых таблиц для миграций
 
 	if err := DB.AutoMigrate(&models.Actor{}, &models.Film{}, &models.Category{}); err != nil {
 		log.Fatalf("Ошибка миграции: %v", err)

@@ -1,0 +1,19 @@
+.git
+.gitignore
+README.md
+docker-compose.yml
+*.md
+
+# Go specific
+go_server/*.exe
+
+ml_service/__pycache__
+ml_service/*.pyc
+ml_service/venv
+ml_service/.env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo

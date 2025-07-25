@@ -22,7 +22,11 @@ def load_movies_from_go():
         print("Получаем фильмы из Go сервиса...")
         
         # Запрос к Go API
-        response = requests.post('http://localhost:8000/api/get-films', timeout=10)
+        #Это для Docker
+        go_server_url = os.getenv('GO_SERVER_URL', 'http://go_server:8000')
+        response = requests.post(f'{go_server_url}/api/get-films', timeout=10)
+
+        # response = requests.post('http://localhost:8000/api/get-films', timeout=10) Раccкоментить из закомментить то, если запускаешь без docker
         
         if response.status_code == 200:
             go_movies = response.json()
